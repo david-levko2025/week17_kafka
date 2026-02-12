@@ -1,10 +1,15 @@
 from pymongo import MongoClient
-import os
+from os import getenv
 
-MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
-MONGO_DB = os.getenv('MONGO_DB', 'appdb')
-MONGO_COLLECTION = os.getenv('MONGO_COLLECTION', 'users')
+mongo_uri = getenv('MONGO_URI', 'mongodb://localhost:27017')
+mongo_db = getenv('MONGO_DB', 'week17')
+mongo_collerction = getenv('MONGO_COLLECTION', 'testercollection')
+file_patch = './suspicious_customers_orders.json'
 
-client = MongoClient(MONGO_URI)
-db = client[MONGO_DB]
-collection = db[MONGO_COLLECTION]
+def get_connection():
+    client = MongoClient(mongo_uri)
+    db = client["concats_data"]
+    collection = db["usersAndCustomers"]
+    return collection
+
+collection = get_connection()
