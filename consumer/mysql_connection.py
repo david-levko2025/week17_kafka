@@ -45,6 +45,7 @@ class Connection:
                         shippedDate DATE,
                         status VARCHAR(50),
                         comments VARCHAR(255),
+                        customerNumber INT,
                         FOREIGN KEY (customerNumber) REFERENCES customers(customerNumber)
                         )"""
 
