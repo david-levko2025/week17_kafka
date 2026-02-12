@@ -1,9 +1,10 @@
 from pymongo import MongoClient
-from os import getenv
+import os
 
-mongo_uri = getenv('MONGO_URI', 'mongodb://localhost:27017')
-mongo_db = getenv('MONGO_DB', 'week17')
-mongo_collerction = getenv('MONGO_COLLECTION', 'testercollection')
+    
+mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
+mongo_db = os.getenv('MONGO_DB', 'users_db')
+mongo_collection = os.getenv('MONGO_COLLECTION', 'testercollection')
 file_patch = './suspicious_customers_orders.json'
 
 def get_connection():
@@ -12,4 +13,4 @@ def get_connection():
     collection = db["usersAndCustomers"]
     return collection
 
-collection = get_connection()
+connection = get_connection()
