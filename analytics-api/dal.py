@@ -1,4 +1,4 @@
-from consumer.mysql_connection import Connection
+from connection import Connection
 
 connection = Connection()
 

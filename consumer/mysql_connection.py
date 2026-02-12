@@ -15,7 +15,7 @@ class Connection:
     def get_connection(self):
         self.connection = mysql.connector.connect(**self.config)
         if not self.connection.is_connected:
-            raise ConnectionError("Couldn't connect to the database")
+            print("Couldn't connect to the database")
         return self.connection
 
     def create_tables(self):

@@ -32,4 +32,4 @@ class MongoConnector:
 
     def check_connection(self):
         if self.client is None:
-            raise ConnectionError("Server not connected")
+            print("Server not connected")
