@@ -18,7 +18,7 @@ def delivery_report(err, msg):
         print(f"Delivered to {msg.topic()} : partition {msg.partition()} : at offset {msg.offset()}")
 
 
-def produce_json_file(weapon: dict):
+def produce_connection_json(weapon: dict):
     producer.produce(
         topic=os.getenv("KAFKA_TOPIC", "weapons"),
         value=json.dumps(weapon).encode('utf-8'),
@@ -27,6 +27,6 @@ def produce_json_file(weapon: dict):
     producer.flush()
 
 
-def produce_weapons(weapons: list[dict]):
+def produce_connection(weapons: list[dict]):
     for weapon in weapons:
-        produce_json_file(weapon)
+        produce_connection_json(weapon)

@@ -1,8 +1,8 @@
-from dal import read_all
+from dal import read_all_connection
 
 
 def main():
-    read_all()
+    read_all_connection()
 
 
 if __name__ == "__main__":
