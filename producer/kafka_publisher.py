@@ -1,5 +1,6 @@
 import json
 import os
+
 from confluent_kafka import Producer
 
 
@@ -18,15 +19,15 @@ def delivery_report(err, msg):
         print(f"Delivered to {msg.topic()} : partition {msg.partition()} : at offset {msg.offset()}")
 
 
-def produce_connection_json(weapon: dict):
+def produce_connection(collection: dict):
     producer.produce(
-        topic=os.getenv("KAFKA_TOPIC", "weapons"),
-        value=json.dumps(weapon).encode('utf-8'),
+        topic=os.getenv("KAFKA_TOPIC", "database"),
+        value=json.dumps(collection).encode('utf-8'),
         callback=delivery_report
     )
     producer.flush()
 
 
-def produce_connection(weapons: list[dict]):
-    for weapon in weapons:
-        produce_connection_json(weapon)
+def produce_connection(collection: list[dict]):
+    for coll in collection:
+        produce_connection(coll)
